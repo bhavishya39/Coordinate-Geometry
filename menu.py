@@ -1,5 +1,6 @@
 from main import StLine
 from main import TwoStLine
+from main import Circle
 
 def menu():
     print(
@@ -85,6 +86,61 @@ s to solve the equations
                 print(s.lineDistance())
             elif op == "s":
                 print(s.solve())
+            elif op == "0":
+                menu()
+                break
+            else:
+                print("Invalid Operation")
+    elif curve == "2":
+        x = float(input("Enter x coordinate of center: "))
+        y = float(input("Enter y coordinate of center: "))
+        r = float(input("Enter radius: "))
+        c = Circle(x, y, r)
+        print(
+'''
+Circle operations:
+e to get equation of circle
+c to get circumference
+a to get area
+d to get diameter
+z to get center
+t to check type
+i to get intercepts
+p to check position of a point with respect to circle
+tg to check if line is tangent
+sc to check if line is secant
+ex to check if line is external
+0 to exit Circle mode
+'''
+        )
+        while True:
+            op = input("Enter operation: ")
+            if op == "e":
+                print(c.getEquation())
+            elif op == "c":
+                print(c.getCircumference())
+            elif op == "a":
+                print(c.getArea())
+            elif op == "d":
+                print(c.getDiameter())
+            elif op == "z":
+                print(c.getCenter())
+            elif op == "t":
+                print(c.checkType())
+            elif op == "i":
+                print(c.getIntercepts())
+            elif op == "p":
+                p = list(map(float, input("Enter x,y coordinates of the point: ").split(",")))
+                print(c.pointPosition(p[0], p[1]))
+            elif op == "tg":
+                l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
+                print(c.isTangent(l))
+            elif op == "sc":
+                l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
+                print(c.isSecant(l))
+            elif op == "ex":
+                l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
+                print(c.isExternal(l))
             elif op == "0":
                 menu()
                 break
