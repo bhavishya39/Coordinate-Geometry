@@ -60,7 +60,6 @@ class Circle:
         else:
             print("Invalid")
 
-    
     def get_intercepts(self):
         if self.r > 0:
             g = -self.h

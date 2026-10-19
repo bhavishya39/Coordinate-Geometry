@@ -133,13 +133,13 @@ ex to check if line is external
                 p = list(map(float, input("Enter x,y coordinates of the point: ").split(",")))
                 c.point_position(p[0], p[1])
             elif op == "tg":
-                l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
+                l = list(map(float, input("Enter coefficients and constant term of line in a,b,c format: ").split(",")))
                 print(c.is_tangent(l))
             elif op == "sc":
-                l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
+                l = list(map(float, input("Enter coefficients and constant term of line in a,b,c format: ").split(",")))
                 print(c.is_secant(l))
             elif op == "ex":
-                l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
+                l = list(map(float, input("Enter coefficients and constant term of line in a,b,c format: ").split(",")))
                 print(c.is_external(l))
             elif op == "0":
                 menu()
