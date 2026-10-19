@@ -1,11 +1,11 @@
-from main import StLine
-from main import TwoStLine
-from main import Circle
+from geometry.stline import StLine
+from geometry.stline import TwoStLine
+from geometry.circle import Circle
 
 def menu():
     print(
 '''
-WELCOME TO COORDINATE GEOMETRY FRAMEWORK
+WELCOME TO THE COORDINATE GEOMETRY TOOLKIT
 
 Enter 1 for Single Straight Line
 Enter 1+ for Two Straight Lines
@@ -17,10 +17,10 @@ Enter 5 for Hyperbola
     )
     curve = input()
     if curve == "1":
-        x = float(input("Enter x coordinate: "))
-        y = float(input("Enter y coordinate: "))
-        m = float(input("Enter slope: "))
-        l = StLine(x, y, m)
+        a = float(input("Enter x coefficient: "))
+        b = float(input("Enter y coefficient: "))
+        c = float(input("Enter constant term: "))
+        l = StLine(a, b, c)
         print(
 '''
 Single Straight Line operations:
@@ -37,28 +37,28 @@ y to check if line parallel to y axis
         while True:
             op = input("Enter operation: ")
             if op == "m":
-                print(l.getSlope())
+                print(l.get_slope())
             elif op == "A":
-                print(l.getSlopeAngle())
+                print(l.get_slope_angle())
             elif op == "e":
-                print(l.cartEquation())
+                l.equation()
             elif op == "i":
-                print(l.getIntercepts())
+                l.get_intercepts()
             elif op == "d":
                 p = list(map(int, input("Enter x,y coordinates of the point: ").split(",")))
-                print(l.pointDistance(p[0], p[1]))
+                print(l.point_distance(p[0], p[1]))
             elif op == "x":
-                print(l.isXparallel())
+                print(l.is_xparallel())
             elif op == "y":
-                print(l.isYparallel())
+                print(l.is_yparallel())
             elif op == "0":
                 menu()
                 break
             else:
                 print("Invalid Operation")
     elif curve == "1+":
-        l1 = list(map(float, input("Enter coordinates and slope of line one in x,y,m format: ").split(",")))
-        l2 = list(map(float, input("Enter coordinates and slope of line two in x,y,m format: ").split(",")))
+        l1 = list(map(float, input("Enter coefficients and constant term of L1 in a,b,c format: ").split(",")))
+        l2 = list(map(float, input("Enter coefficients and constant term of L2 in a,b,c format: ").split(",")))
         s = TwoStLine(l1, l2)
         print(
 '''
@@ -75,15 +75,15 @@ s to solve the equations
         while True:
             op = input("Enter operation: ")
             if op == "pd":
-                print(s.isPerpendicular())
+                print(s.is_perpendicular())
             elif op == "A":
-                print(s.findAngle())
+                print(s.find_angle())
             elif op == "e":
-                print(s.getEquations())
+                print(s.get_equations())
             elif op == "pl":
-                print(s.isParallel())
+                print(s.is_parallel())
             elif op == "d":
-                print(s.lineDistance())
+                print(s.line_distance())
             elif op == "s":
                 print(s.solve())
             elif op == "0":
@@ -116,31 +116,31 @@ ex to check if line is external
         while True:
             op = input("Enter operation: ")
             if op == "e":
-                print(c.getEquation())
+                c.get_equation()
             elif op == "c":
-                print(c.getCircumference())
+                print(c.get_circumference())
             elif op == "a":
-                print(c.getArea())
+                print(c.get_area())
             elif op == "d":
-                print(c.getDiameter())
+                print(c.get_diameter())
             elif op == "z":
-                print(c.getCenter())
+                print(c.get_center())
             elif op == "t":
-                print(c.checkType())
+                c.check_type()
             elif op == "i":
-                print(c.getIntercepts())
+                c.get_intercepts()
             elif op == "p":
                 p = list(map(float, input("Enter x,y coordinates of the point: ").split(",")))
-                print(c.pointPosition(p[0], p[1]))
+                c.point_position(p[0], p[1])
             elif op == "tg":
                 l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
-                print(c.isTangent(l))
+                print(c.is_tangent(l))
             elif op == "sc":
                 l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
-                print(c.isSecant(l))
+                print(c.is_secant(l))
             elif op == "ex":
                 l = list(map(float, input("Enter coordinates and slope of line in x,y,m format: ").split(",")))
-                print(c.isExternal(l))
+                print(c.is_external(l))
             elif op == "0":
                 menu()
                 break
